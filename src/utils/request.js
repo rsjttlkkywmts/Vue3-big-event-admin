@@ -26,7 +26,7 @@ instance.interceptors.request.use(
 instance.interceptors.response.use(
   (res) => {
     // 4. 摘取核心响应数据
-    if(res.code === 0){
+    if(res.data.code === 0){
       return res
     }else{
     // 3. 处理业务失败
@@ -36,7 +36,7 @@ instance.interceptors.response.use(
   },
   (err) => {
     // 5. 处理401错误
-    if(err.response.status === 401){
+    if(err.response?.status === 401){
       router.push('/login')
     }
 
