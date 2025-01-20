@@ -5,6 +5,9 @@ import { ref } from 'vue'
 defineProps({
   modelValue: {
     type: [Number, String]
+  },
+  width: {
+    type: String,
   }
 })
 const data = ref([])
@@ -18,7 +21,8 @@ const emit = defineEmits(['update:modelValue'])
 </script>
 
 <template>
-  <el-select  :modelValue="modelValue" @update:modelValue="emit('update:modelValue', $event)">
+  <el-select  :modelValue="modelValue" @update:modelValue="emit('update:modelValue', $event)"
+  :style="{ width }">
     <el-option v-for="item in data" :label="item.cate_name" :value="item.id" :key="item.id">
     </el-option>
   </el-select>
